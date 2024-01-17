@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:pulus/data/app_color.dart';
 import 'package:pulus/features/auth/sign%20up/screen/signUp_view.dart';
+import 'package:pulus/features/home/screen/bottomNav.dart';
 import 'package:pulus/widgets/widgets.dart';
 
 class SignInView extends StatefulWidget {
@@ -78,7 +79,14 @@ class _SignInViewState extends State<SignInView> {
               padding: const EdgeInsets.only(bottom: 36),
               child: Column(
                 children: [
-                  PrimaryButton(text: '    Masuk    ', onPressed: () {}),
+                  PrimaryButton(
+                      text: '    Masuk    ',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BottomNav()));
+                      }),
                   SizedBox(
                     height: 18,
                   ),

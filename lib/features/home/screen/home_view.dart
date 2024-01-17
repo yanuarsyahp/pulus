@@ -1,9 +1,11 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last, non_constant_identifier_names, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:pulus/data/app_color.dart';
 import 'package:pulus/features/home/widget/noTab.dart';
+import 'package:pulus/features/shop/screen/noWasteType.dart';
+import 'package:pulus/features/shop/screen/oWasteType.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -42,11 +44,23 @@ class _HomeViewState extends State<HomeView> {
           SpeedDialChild(
               child: Image.asset('assets/images/plastic.png'),
               label: 'Non-organik',
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const NoWasteType())));
+              },
               backgroundColor: AppColor.primaryColor,
               foregroundColor: Colors.white),
           SpeedDialChild(
               child: Image.asset('assets/images/corn.png'),
               label: 'Organik',
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const OWasteType())));
+              },
               backgroundColor: AppColor.primaryColor,
               foregroundColor: Colors.white)
         ],
@@ -76,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
                   Image.asset('assets/images/home_design.png'),
                   Positioned(
                       top: 20,
-                      left: 25,
+                      left: 20,
                       child: Text(
                         '20',
                         style: TextStyle(
@@ -85,8 +99,8 @@ class _HomeViewState extends State<HomeView> {
                             color: Colors.white),
                       )),
                   Positioned(
-                      top: 75,
-                      left: 25,
+                      top: 72,
+                      left: 20,
                       child: Text(
                         'paket sampah sudah\nberhasil ngehasilin\nRp575.000!',
                         style: TextStyle(
@@ -94,7 +108,7 @@ class _HomeViewState extends State<HomeView> {
                       )),
                   Positioned(
                       top: 150,
-                      left: 25,
+                      left: 20,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
