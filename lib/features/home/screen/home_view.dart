@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:pulus/data/app_color.dart';
-import 'package:pulus/features/home/model/non-organik_model.dart';
+import 'package:pulus/features/home/widget/noTab.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -12,8 +13,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  //NonOrganikTabs
-
   @override
   Widget build(BuildContext context) {
     double Width = MediaQuery.of(context).size.width;
@@ -34,10 +33,23 @@ class _HomeViewState extends State<HomeView> {
     List<String> organikTab = ['assets/images/jagung.png', 'Jagung'];
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+      floatingActionButton: SpeedDial(
         backgroundColor: AppColor.primaryColor,
-        child: Icon(Icons.recycling_rounded),
+        child: Image.asset('assets/images/recycle.png'),
+        spacing: 12,
+        spaceBetweenChildren: 22,
+        children: [
+          SpeedDialChild(
+              child: Image.asset('assets/images/plastic.png'),
+              label: 'Non-organik',
+              backgroundColor: AppColor.primaryColor,
+              foregroundColor: Colors.white),
+          SpeedDialChild(
+              child: Image.asset('assets/images/corn.png'),
+              label: 'Organik',
+              backgroundColor: AppColor.primaryColor,
+              foregroundColor: Colors.white)
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
