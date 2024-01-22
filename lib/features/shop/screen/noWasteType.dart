@@ -34,12 +34,12 @@ class _NoWasteTypeState extends State<NoWasteType> {
             NonOrganik nonOrganik = NonOrganikItems.nonOrganikItems[index];
             return Card(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    nonOrganik.img,
-                    height: 80.0, // Sesuaikan tinggi gambar sesuai kebutuhan
-                  ),
+                  // Image.asset(
+                  //   nonOrganik.img,
+                  //   height: 80.0, // Sesuaikan tinggi gambar sesuai kebutuhan
+                  // ),
                   SizedBox(height: 8.0),
                   Text(
                     nonOrganik.title,
@@ -47,7 +47,7 @@ class _NoWasteTypeState extends State<NoWasteType> {
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    '\$${nonOrganik.price.toStringAsFixed(2)}',
+                    nonOrganik.price.toStringAsFixed(3),
                     style:
                         TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
                   ),

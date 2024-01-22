@@ -17,7 +17,7 @@ class NonOrganikItems {
         id: 'NO1',
         img: 'assets/images/botol.png',
         title: "Botol",
-        price: 1.700),
+        price: 1.800),
     NonOrganik(
         id: 'NO2', img: 'assets/images/cup.png', title: "Cup", price: 1.700),
     NonOrganik(
