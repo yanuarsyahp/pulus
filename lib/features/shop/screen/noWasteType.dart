@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pulus/features/shop/model/nonOrganik.dart';
+import 'package:pulus/features/shop/widget/noWasteType_widget.dart';
 
 class NoWasteType extends StatefulWidget {
   const NoWasteType({super.key});
@@ -13,6 +14,17 @@ class NoWasteType extends StatefulWidget {
 class _NoWasteTypeState extends State<NoWasteType> {
   @override
   Widget build(BuildContext context) {
+    List _nonOrganikTabs = [
+      ["assets/images/botol.png", "Botol", "1.700"],
+      ["assets/images/cup.png", "Cup", "1.700"],
+      ["assets/images/kalengsoda.png", "Kaleng Soda", "15.000"],
+      ["assets/images/kalengtebal.png", "Kaleng Tebal", "2.500"],
+      ["assets/images/karton.png", "Karton", "500"],
+      ["assets/images/kardus.png", "Kardus", "1.500"],
+      ["assets/images/besi.png", "Besi", "5.000"],
+      ["assets/images/plastik.png", "Plastik", "1.000"],
+    ];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -27,33 +39,18 @@ class _NoWasteTypeState extends State<NoWasteType> {
         ),
       ),
       body: GridView.builder(
-          itemCount: NonOrganikItems.nonOrganikItems.length,
+          itemCount: _nonOrganikTabs.length,
+          padding: EdgeInsets.all(12),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 8.0, mainAxisSpacing: 8.0),
-          itemBuilder: (BuildContext context, int index) {
-            NonOrganik nonOrganik = NonOrganikItems.nonOrganikItems[index];
-            return Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Image.asset(
-                  //   nonOrganik.img,
-                  //   height: 80.0, // Sesuaikan tinggi gambar sesuai kebutuhan
-                  // ),
-                  SizedBox(height: 8.0),
-                  Text(
-                    nonOrganik.title,
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  SizedBox(height: 4.0),
-                  Text(
-                    nonOrganik.price.toStringAsFixed(3),
-                    style:
-                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            );
+              crossAxisCount: 2,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              childAspectRatio: 1 / 1.4),
+          itemBuilder: (context, index) {
+            return NoCard(
+                img: _nonOrganikTabs[index][0],
+                title: _nonOrganikTabs[index][1],
+                price: _nonOrganikTabs[index][2]);
           }),
     );
   }
