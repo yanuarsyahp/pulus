@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:pulus/data/app_color.dart';
 
@@ -6,12 +8,16 @@ class NoWidget extends StatefulWidget {
   final String name;
   final double price;
   bool isClicked;
+  final VoidCallback addOnPressed;
+  final VoidCallback removeOnPressed;
   NoWidget(
       {Key? key,
       required this.img,
       required this.name,
       required this.price,
-      required this.isClicked})
+      required this.isClicked,
+      required this.addOnPressed,
+      required this.removeOnPressed})
       : super(key: key);
 
   @override
@@ -19,7 +25,6 @@ class NoWidget extends StatefulWidget {
 }
 
 class _NoWidgetState extends State<NoWidget> {
-  bool _clicked = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,14 +56,15 @@ class _NoWidgetState extends State<NoWidget> {
                         widget.name,
                         style: TextStyle(fontSize: 14),
                       ),
-                      _clicked == !widget.isClicked
+                      widget.isClicked == !false
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 IconButton(
                                     onPressed: () {
                                       setState(() {
-                                        _clicked = widget.isClicked;
+                                        widget.isClicked = !widget.isClicked;
+                                        widget.removeOnPressed();
                                       });
                                     },
                                     icon: Icon(
@@ -68,7 +74,11 @@ class _NoWidgetState extends State<NoWidget> {
                                     )),
                                 Text(widget.price.toString()),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        widget.addOnPressed();
+                                      });
+                                    },
                                     icon: Icon(
                                       Icons.add_circle,
                                       color: AppColor.primaryColor,
@@ -98,7 +108,7 @@ class _NoWidgetState extends State<NoWidget> {
                                     onPressed: () {
                                       print('clicked');
                                       setState(() {
-                                        _clicked = true;
+                                        widget.addOnPressed();
                                       });
                                     },
                                     icon: Icon(

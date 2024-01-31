@@ -1,6 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names, prefer_final_fields
-
-import 'dart:ffi';
+// ignore_for_file: prefer_const_constructors, file_names, prefer_final_fields, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +29,17 @@ class _NoWasteTypeState extends State<NoWasteType> {
     ["assets/images/plastik.png", "Plastik", 1.000],
   ];
 
+  bool botolIsClicked = false;
+  bool cupIsClicked = false;
+  bool kalengSodaIsClicked = false;
+  bool kalengTebalIsClicked = false;
+  bool kartonIsClicked = false;
+  bool kardusIsClicked = false;
+  bool besiIsClicked = false;
+  bool plastikIsClicked = false;
+
+  double beratTotal = 0.0;
+
   @override
   Widget build(BuildContext context) {
     // final cart = Provider.of<CartProvider>(context);
@@ -59,66 +68,163 @@ class _NoWasteTypeState extends State<NoWasteType> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         NoWidget(
-                            img: _nonOrganikTabs[0][0],
-                            name: _nonOrganikTabs[0][1],
-                            price: _nonOrganikTabs[0][2],
-                            isClicked: false),
-                        NoWidget(
-                            img: _nonOrganikTabs[1][0],
-                            name: _nonOrganikTabs[1][1],
-                            price: _nonOrganikTabs[1][2],
-                            isClicked: false),
+                          img: _nonOrganikTabs[0][0],
+                          name: _nonOrganikTabs[0][1],
+                          price: _nonOrganikTabs[0][2],
+                          isClicked: botolIsClicked,
+                          addOnPressed: () {
+                            setState(() {
+                              botolIsClicked = !false;
+                              beratTotal = beratTotal + _nonOrganikTabs[0][2];
+                              print(beratTotal.toStringAsFixed(1));
+                            });
+                          },
+                          removeOnPressed: () {
+                            setState(() {
+                              beratTotal = beratTotal - _nonOrganikTabs[0][2];
+                              beratTotal < 0.0
+                                  ? botolIsClicked = false
+                                  : botolIsClicked = !false;
+                              print(beratTotal.toStringAsFixed(1));
+                            });
+                          },
+                        ),
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[1][0],
+                        //       name: _nonOrganikTabs[1][1],
+                        //       price: _nonOrganikTabs[1][2],
+                        //       isClicked: cupIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           cupIsClicked = !cupIsClicked;
+                        //         });
+                        //       },
+                        //     ),
+                        //   ],
+                        // ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[2][0],
+                        //       name: _nonOrganikTabs[2][1],
+                        //       price: _nonOrganikTabs[2][2],
+                        //       isClicked: kalengSodaIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           kalengSodaIsClicked = !kalengSodaIsClicked;
+                        //         });
+                        //       },
+                        //     ),
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[3][0],
+                        //       name: _nonOrganikTabs[3][1],
+                        //       price: _nonOrganikTabs[3][2],
+                        //       isClicked: kalengTebalIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           kalengTebalIsClicked = !kalengTebalIsClicked;
+                        //         });
+                        //       },
+                        //     ),
+                        //   ],
+                        // ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[4][0],
+                        //       name: _nonOrganikTabs[4][1],
+                        //       price: _nonOrganikTabs[4][2],
+                        //       isClicked: kartonIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           kardusIsClicked = !kardusIsClicked;
+                        //         });
+                        //       },
+                        //     ),
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[5][0],
+                        //       name: _nonOrganikTabs[5][1],
+                        //       price: _nonOrganikTabs[5][2],
+                        //       isClicked: kardusIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           kardusIsClicked = !kardusIsClicked;
+                        //         });
+                        //       },
+                        //     ),
+                        //   ],
+                        // ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[6][0],
+                        //       name: _nonOrganikTabs[6][1],
+                        //       price: _nonOrganikTabs[6][2],
+                        //       isClicked: besiIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           besiIsClicked = !besiIsClicked;
+                        //         });
+                        //       },
+                        //     ),
+                        //     NoWidget(
+                        //       img: _nonOrganikTabs[7][0],
+                        //       name: _nonOrganikTabs[7][1],
+                        //       price: _nonOrganikTabs[7][2],
+                        //       isClicked: plastikIsClicked,
+                        //       onPressed: () {
+                        //         setState(() {
+                        //           plastikIsClicked = !plastikIsClicked;
+                        //         });
+                        //       },
+                        //     ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        NoWidget(
-                            img: _nonOrganikTabs[2][0],
-                            name: _nonOrganikTabs[2][1],
-                            price: _nonOrganikTabs[2][2],
-                            isClicked: false),
-                        NoWidget(
-                            img: _nonOrganikTabs[3][0],
-                            name: _nonOrganikTabs[3][1],
-                            price: _nonOrganikTabs[3][2],
-                            isClicked: false),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        NoWidget(
-                            img: _nonOrganikTabs[4][0],
-                            name: _nonOrganikTabs[4][1],
-                            price: _nonOrganikTabs[4][2],
-                            isClicked: false),
-                        NoWidget(
-                            img: _nonOrganikTabs[5][0],
-                            name: _nonOrganikTabs[5][1],
-                            price: _nonOrganikTabs[5][2],
-                            isClicked: false),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        NoWidget(
-                            img: _nonOrganikTabs[6][0],
-                            name: _nonOrganikTabs[6][1],
-                            price: _nonOrganikTabs[6][2],
-                            isClicked: false),
-                        NoWidget(
-                            img: _nonOrganikTabs[7][0],
-                            name: _nonOrganikTabs[7][1],
-                            price: _nonOrganikTabs[7][2],
-                            isClicked: false),
-                      ],
+                    SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
               ),
             ),
+            botolIsClicked == false &&
+                    cupIsClicked == false &&
+                    kalengSodaIsClicked == false &&
+                    kalengTebalIsClicked == false &&
+                    kartonIsClicked == false &&
+                    kardusIsClicked == false &&
+                    besiIsClicked == false &&
+                    plastikIsClicked == false
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.fromLTRB(4, 20, 20, 4),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [Text('Berat total')],
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [Text('Total uang'), Text('Rp5.100')],
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Divider(),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Row(),
+                      ],
+                    ),
+                  )
           ],
         ),
       ),
