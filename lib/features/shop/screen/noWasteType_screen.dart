@@ -104,14 +104,14 @@ class _NoWasteTypeState extends State<NoWasteType> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         NoWidget(
-                            img: _nonOrganikTabs[2][0],
-                            name: _nonOrganikTabs[2][1],
-                            price: _nonOrganikTabs[2][2],
+                            img: _nonOrganikTabs[6][0],
+                            name: _nonOrganikTabs[6][1],
+                            price: _nonOrganikTabs[6][2],
                             isClicked: false),
                         NoWidget(
-                            img: _nonOrganikTabs[3][0],
-                            name: _nonOrganikTabs[3][1],
-                            price: _nonOrganikTabs[3][2],
+                            img: _nonOrganikTabs[7][0],
+                            name: _nonOrganikTabs[7][1],
+                            price: _nonOrganikTabs[7][2],
                             isClicked: false),
                       ],
                     ),
