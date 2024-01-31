@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print, sized_box_for_whitespace, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
 import 'package:pulus/data/app_color.dart';
@@ -25,6 +25,7 @@ class NoWidget extends StatefulWidget {
 }
 
 class _NoWidgetState extends State<NoWidget> {
+  double beratItem = 0.0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,8 +64,11 @@ class _NoWidgetState extends State<NoWidget> {
                                 IconButton(
                                     onPressed: () {
                                       setState(() {
-                                        widget.isClicked = !widget.isClicked;
+                                        beratItem <= 0.0
+                                            ? widget.isClicked = false
+                                            : beratItem = beratItem - 1.0;
                                         widget.removeOnPressed();
+                                        print(beratItem.toStringAsFixed(1));
                                       });
                                     },
                                     icon: Icon(
@@ -72,11 +76,15 @@ class _NoWidgetState extends State<NoWidget> {
                                       color: AppColor.newRed,
                                       size: 28,
                                     )),
-                                Text(widget.price.toString()),
+                                Text(
+                                  beratItem.toStringAsFixed(1) + ' kg',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                                 IconButton(
                                     onPressed: () {
                                       setState(() {
                                         widget.addOnPressed();
+                                        beratItem = beratItem + 1.0;
                                       });
                                     },
                                     icon: Icon(
@@ -97,7 +105,7 @@ class _NoWidgetState extends State<NoWidget> {
                                       width: 20,
                                     ),
                                     Text(
-                                      '  Rp${widget.price}/kg',
+                                      '  Rp${widget.price.toStringAsFixed(3)}/kg',
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold),
@@ -109,6 +117,7 @@ class _NoWidgetState extends State<NoWidget> {
                                       print('clicked');
                                       setState(() {
                                         widget.addOnPressed();
+                                        beratItem = beratItem + 1.0;
                                       });
                                     },
                                     icon: Icon(

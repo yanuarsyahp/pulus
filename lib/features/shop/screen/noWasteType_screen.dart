@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names, prefer_final_fields, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, file_names, prefer_final_fields, prefer_const_literals_to_create_immutables, unrelated_type_equality_checks, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +39,7 @@ class _NoWasteTypeState extends State<NoWasteType> {
   bool plastikIsClicked = false;
 
   double beratTotal = 0.0;
+  double totalUang = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -75,17 +76,20 @@ class _NoWasteTypeState extends State<NoWasteType> {
                           addOnPressed: () {
                             setState(() {
                               botolIsClicked = !false;
-                              beratTotal = beratTotal + _nonOrganikTabs[0][2];
-                              print(beratTotal.toStringAsFixed(1));
+                              beratTotal = beratTotal + 1.0;
+                              totalUang = totalUang + _nonOrganikTabs[0][2];
+                              print(totalUang.toStringAsFixed(3));
                             });
                           },
                           removeOnPressed: () {
                             setState(() {
-                              beratTotal = beratTotal - _nonOrganikTabs[0][2];
-                              beratTotal < 0.0
-                                  ? botolIsClicked = false
-                                  : botolIsClicked = !false;
-                              print(beratTotal.toStringAsFixed(1));
+                              beratTotal = beratTotal - 1.0;
+                              print(totalUang.toStringAsFixed(3));
+
+                              totalUang = totalUang - _nonOrganikTabs[0][2];
+                              totalUang <= 0.0
+                                  ? totalUang == 0.0
+                                  : print(totalUang.toStringAsFixed(3));
                             });
                           },
                         ),
@@ -205,19 +209,34 @@ class _NoWasteTypeState extends State<NoWasteType> {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text('Berat total')],
+                          children: [
+                            Text('Berat total'),
+                            Text(
+                              '${beratTotal} kg',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
                         ),
                         SizedBox(
                           height: 12,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text('Total uang'), Text('Rp5.100')],
+                          children: [
+                            Text('Total uang'),
+                            Text(
+                              'Rp${totalUang.toStringAsFixed(3)}',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            )
+                          ],
                         ),
                         SizedBox(
                           height: 6,
                         ),
-                        Divider(),
+                        Divider(
+                          color: Colors.black.withOpacity(0.5),
+                        ),
                         SizedBox(
                           height: 6,
                         ),
