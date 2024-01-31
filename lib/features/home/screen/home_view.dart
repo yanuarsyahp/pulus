@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:pulus/data/app_color.dart';
 import 'package:pulus/features/home/widget/noTab.dart';
-import 'package:pulus/features/shop/screen/noWasteType.dart';
+import 'package:pulus/features/shop/screen/noWasteType_screen.dart';
 import 'package:pulus/features/shop/screen/oWasteType.dart';
 
 class HomeView extends StatefulWidget {
