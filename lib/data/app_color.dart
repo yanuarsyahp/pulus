@@ -18,4 +18,6 @@ class AppColor {
   static Color newGrey = HexColor('989898');
   static Color newRed = HexColor('EB5757');
   static Color newPurple = HexColor('6F5490');
+  static Color newBlue = HexColor('449AFF');
+  static Color newYellow = HexColor('FCD341');
 }

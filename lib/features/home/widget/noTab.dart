@@ -40,7 +40,10 @@ class NonOrganikTab extends StatelessWidget {
         SizedBox(
           height: Height * 0.02,
         ),
-        Text(title)
+        Text(
+          title,
+          style: TextStyle(fontSize: 14),
+        )
       ],
     );
   }

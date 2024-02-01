@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pulus/data/app_color.dart';
+import 'package:pulus/features/shop/screen/oWasteType_screen.dart';
 import 'package:pulus/features/shop/widget/SumListItem.dart';
 
 class SummaryView extends StatefulWidget {
@@ -28,7 +29,8 @@ class _SummaryViewState extends State<SummaryView> {
               color: Colors.black,
             ),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => OWasteType()));
             },
           ),
           title: Text(

@@ -47,7 +47,7 @@ class _SettingsViewState extends State<SettingsView> {
                         onPressed: () {},
                       ),
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {},
                       child: Container(
                         decoration: BoxDecoration(

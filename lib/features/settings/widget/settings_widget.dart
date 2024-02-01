@@ -27,41 +27,44 @@ class _SettingButtonState extends State<SettingButton> {
     String buttonText = widget.text;
     bool buttonIcon = widget.icon;
     double sizeImage = widget.sizeImage;
-    return Container(
-      height: 50,
-      padding: EdgeInsets.fromLTRB(17, 5, 17, 5),
-      margin: EdgeInsets.only(bottom: 10.0),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 3,
-                spreadRadius: 1,
-                offset: Offset(0, 3))
-          ]),
-      child: Row(
-        children: [
-          Image.asset(
-            Images,
-            scale: sizeImage,
-          ),
-          SizedBox(
-            width: 15,
-          ),
-          Text(
-            buttonText,
-            style: TextStyle(fontSize: 14),
-          ),
-          Spacer(),
-          buttonIcon
-              ? Icon(
-                  Icons.navigate_next,
-                  color: AppColor.primaryColor,
-                )
-              : SizedBox.shrink()
-        ],
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        height: 50,
+        padding: EdgeInsets.fromLTRB(17, 5, 17, 5),
+        margin: EdgeInsets.only(bottom: 10.0),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 3,
+                  spreadRadius: 1,
+                  offset: Offset(0, 3))
+            ]),
+        child: Row(
+          children: [
+            Image.asset(
+              Images,
+              scale: sizeImage,
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            Text(
+              buttonText,
+              style: TextStyle(fontSize: 14),
+            ),
+            Spacer(),
+            buttonIcon
+                ? Icon(
+                    Icons.navigate_next,
+                    color: AppColor.primaryColor,
+                  )
+                : SizedBox.shrink()
+          ],
+        ),
       ),
     );
   }

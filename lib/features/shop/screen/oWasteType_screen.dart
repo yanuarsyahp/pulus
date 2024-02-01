@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:pulus/data/app_color.dart';
 import 'package:pulus/features/home/screen/bottomNav.dart';
+import 'package:pulus/features/shop/screen/summary_screen.dart';
 import 'package:pulus/features/shop/widget/Waste_widget.dart';
 
 class OWasteType extends StatefulWidget {
@@ -138,7 +139,7 @@ class _OWasteTypeState extends State<OWasteType> {
                           children: [
                             Container(
                               height: 42,
-                              width: 160,
+                              width: 153,
                               child: ElevatedButton(
                                 onPressed: () {
                                   setState(() {
@@ -164,9 +165,15 @@ class _OWasteTypeState extends State<OWasteType> {
                             ),
                             Container(
                               height: 42,
-                              width: 160,
+                              width: 153,
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              SummaryView())));
+                                },
                                 child: Text('Confirm'),
                                 style: ElevatedButton.styleFrom(
                                   primary: AppColor.primaryColor,

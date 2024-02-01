@@ -43,11 +43,11 @@ class SumListItem extends StatelessWidget {
                   SizedBox(
                     height: 14,
                   ),
-                  Text('Rp2.000'),
+                  Text('Rp8.000'),
                   SizedBox(
                     height: 14,
                   ),
-                  Text("1x")
+                  Text("4 kg")
                 ],
               )
             ],
