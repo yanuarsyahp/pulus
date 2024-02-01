@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, file_names, prefer_interpolation_to_compose_strings
+// ignore_for_file: prefer_const_constructors, file_names, prefer_interpolation_to_compose_strings, avoid_print, sort_child_properties_last, sized_box_for_whitespace, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:pulus/data/app_color.dart';
 import 'package:pulus/features/home/screen/bottomNav.dart';
 import 'package:pulus/features/shop/widget/Waste_widget.dart';
 
@@ -69,14 +70,6 @@ class _OWasteTypeState extends State<OWasteType> {
                                   jagungItemQuantity + _organikTabs[3];
                               beratTotal = beratTotal + _organikTabs[3];
                               totalUang = totalUang + _organikTabs[2];
-                              print('quantity : ' +
-                                  jagungItemQuantity.toStringAsFixed(1) +
-                                  'x');
-                              print('berat total : ' +
-                                  beratTotal.toStringAsFixed(1) +
-                                  'kg');
-                              print('total uang : Rp' +
-                                  totalUang.toStringAsFixed(3));
                             });
                           },
                           removeOnPressed: () {
@@ -85,18 +78,10 @@ class _OWasteTypeState extends State<OWasteType> {
                                   jagungItemQuantity - _organikTabs[3];
                               jagungItemQuantity <= 0.0
                                   ? jagungIsClicked = false
-                                  : print('quantity : ' +
-                                      jagungItemQuantity.toStringAsFixed(1) +
-                                      'x');
+                                  : print("can't reduce it");
 
                               beratTotal = beratTotal - _organikTabs[3];
                               totalUang = totalUang - _organikTabs[2];
-
-                              print('berat total : ' +
-                                  beratTotal.toStringAsFixed(1) +
-                                  'kg');
-                              print('total uang : Rp' +
-                                  totalUang.toStringAsFixed(3));
                             });
                           },
                         ),
@@ -120,7 +105,7 @@ class _OWasteTypeState extends State<OWasteType> {
                           children: [
                             Text('Berat total'),
                             Text(
-                              '${beratTotal.toStringAsFixed(3)} kg',
+                              '${beratTotal.toStringAsFixed(1)} kg',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],
@@ -140,15 +125,61 @@ class _OWasteTypeState extends State<OWasteType> {
                           ],
                         ),
                         SizedBox(
-                          height: 6,
+                          height: 10,
                         ),
                         Divider(
                           color: Colors.black.withOpacity(0.5),
                         ),
                         SizedBox(
-                          height: 6,
+                          height: 10,
                         ),
-                        Row(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              height: 42,
+                              width: 160,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    jagungItemQuantity = 0.0;
+                                    beratTotal = 0.0;
+                                    totalUang = 0.0;
+                                    jagungIsClicked = false;
+                                  });
+                                },
+                                child: Text(
+                                  'Cancel',
+                                  style:
+                                      TextStyle(color: AppColor.primaryColor),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(14)),
+                                    side: BorderSide(
+                                        color: AppColor.primaryColor)),
+                              ),
+                            ),
+                            Container(
+                              height: 42,
+                              width: 160,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Text('Confirm'),
+                                style: ElevatedButton.styleFrom(
+                                  primary: AppColor.primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14)),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                       ],
                     ),
                   )

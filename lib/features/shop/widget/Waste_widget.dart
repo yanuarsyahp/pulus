@@ -113,7 +113,7 @@ class _WasteWidgetState extends State<WasteWidget> {
                                       Text(
                                         '  Rp${widget.price.toStringAsFixed(3)}/kg',
                                         style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 13,
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ],
