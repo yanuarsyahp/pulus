@@ -55,10 +55,8 @@ class _HomeViewState extends State<HomeView> {
               child: Image.asset('assets/images/corn.png'),
               label: 'Organik',
               onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => const OWasteType())));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: ((context) => OWasteType())));
               },
               backgroundColor: AppColor.primaryColor,
               foregroundColor: Colors.white)

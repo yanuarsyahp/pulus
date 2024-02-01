@@ -97,7 +97,7 @@ class _OWasteTypeState extends State<OWasteType> {
             jagungIsClicked == false
                 ? Container()
                 : Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 20, 20, 4),
+                    padding: const EdgeInsets.fromLTRB(20, 4, 20, 4),
                     child: Column(
                       children: [
                         Row(
