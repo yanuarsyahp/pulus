@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:pulus/data/app_color.dart';
 import 'package:pulus/features/home/widget/noTab.dart';
-import 'package:pulus/features/shop/screen/noWasteType_screen.dart';
-import 'package:pulus/features/shop/screen/oWasteType.dart';
+import 'package:pulus/features/shop/screen/oWasteType_screen.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -45,10 +44,10 @@ class _HomeViewState extends State<HomeView> {
               child: Image.asset('assets/images/plastic.png'),
               label: 'Non-organik',
               onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => const NoWasteType())));
+                // Navigator.pushReplacement(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: ((context) => const NoWasteType())));
               },
               backgroundColor: AppColor.primaryColor,
               foregroundColor: Colors.white),
